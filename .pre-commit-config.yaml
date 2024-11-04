@@ -1,0 +1,22 @@
+repos:
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+    -   id: check-yaml
+    -   id: end-of-file-fixer
+    -   id: trailing-whitespace
+
+-   repo: https://github.com/psf/black
+    rev: 24.10.0  # Make sure to use the latest stable version
+    hooks:
+    -   id: black
+    -   id: black-jupyter
+
+-  repo: local
+   hooks:
+   -   id: commit-message-check
+       name: Commit Message Check
+       entry: python ./hooks/validate_commit_msg.py
+       language: python
+       stages: [commit-msg]
+       always_run: true
